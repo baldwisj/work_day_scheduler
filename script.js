@@ -36,9 +36,6 @@ $(function () {
   const four = $("#4p");
   const five = $("#5p");
 
-  const calendarContainer = $('#calendar');
-
-
   seven.text("7 am");
   eight.text("8 am");
   nine.text("9 am");
@@ -50,88 +47,30 @@ $(function () {
   three.text("3 pm");
   four.text("4 pm");
   five.text("5 pm");
+  const calendarContainer = $('#calendar');
+  
   const currentHour = dayjs().format('H:00')
   console.log(currentHour);
   console.log(five.textContent)
 
   const timeBlock = $(".time-block")
   timeBlock.each(function() {
-    // if(this.id === currentHour){
-    //   this.addClass('.present')
-    //   (this).removeClass('.past')
-    // } else if (this.id < currentHour) {
-    //   (this).addClass('.past')
-    //   (this).removeClass('.present')
-    //   (this).removeClass('.future')
-    // } else {
-    //   this.addClass('.future')
-    //   this.removeClass('.present')
-    //   this.removeClass('.past')
-    console.log(timeBlock.id)
-    }
-  })
-  // for (let i = 0; i <= 10; i++) {
-  // let eachHour = dayjs('2023-11-03 07:00 am').add([i],'hour').format('h a');
-  // console.log(eachHour)
-  // const hourBlockDiv = $('<div>');
-  // const hourBlockNumDiv = $('<div>');
-  // const blockTextArea = $('<textarea>');
-  // const saveBtn = $('<button>');
-  // const saveI = $('<i>');
-
-  // calendarContainer.append(hourBlockDiv);
-  // hourBlockDiv.append(hourBlockNumDiv);
-  // hourBlockDiv.append(blockTextArea);
-  // hourBlockDiv.append(saveBtn);
-  // saveBtn.append(saveI);
-
-  // hourBlockDiv.addClass('row time-block');
-  // hourBlockNumDiv.addClass('col-2 col-md-1 hour text-center py-3');
-  // hourBlockNumDiv.attr('id', 'everyHour');
-  // blockTextArea.addClass('col-8 col-md-10 description');
-  // blockTextArea.attr('rows','3');
-  // saveBtn.addClass('btn saveBtn col-2 col-md-1');
-  // saveBtn.attr('aria-label','save');
-  // saveI.addClass('fas fa-save');
-  // saveI.attr('aria-hidden','true');
-  
-  // hourBlockNumDiv.text(eachHour);
-
-  // const everyHour = $('everyHour');
-  // everyHour.text(eachHour)
-
-  
-
-
-
-  // const currentDay = dayjs().format('MMMM D, YYYY');
-  // $('#todaysDate').text(currentDay);
-
-  
-  // let currentHour = dayjs().format('h a');
-
-  // if (currentHour === sevenAm) {
-  //   seven.attr('class','present')
-  // };
-
-  // if (currentHour === eightAm) {
-  //   eight.attr('class','present')
-  // };
-
-  // if (currentHour === nineAm) {
-  //   nine.attr('class','present')
-  // };
-
-  // if (currentHour === twoPm) {
-  //   two.attr('class','future')
-  // };
-
-  // if (currentHour < 7) {
-  //  .addClass('future')
-  // } else {
-  //   addClass('present')
-  // }
-
+    console.log(timeBlock)
+    console.log(this.id)
+    console.log(currentHour)
+    if(this.id === currentHour){
+      timeBlock.addClass('present')
+      timeBlock.removeClass('past')
+    } else if (this.id < currentHour) {
+      timeBlock.addClass('past')
+      timeBlock.removeClass('present')
+      timeBlock.removeClass('future')
+    } else {
+      timeBlock.addClass('future')
+      timeBlock.removeClass('present')
+      timeBlock.removeClass('past')
+    }}
+  )
 });  
 const sevenAm = (dayjs('2023-11-03 07:00 am').format('h a'));
 
