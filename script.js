@@ -49,32 +49,90 @@ $(function () {
   five.text("5 pm");
   const calendarContainer = $('#calendar');
   
-  const currentHour = dayjs().format('H:00')
-  console.log(currentHour);
-  console.log(five.textContent)
-
+  const currentHour = dayjs().format('H')
+  const numHour = Number(currentHour)
   const timeBlock = $(".time-block")
   timeBlock.each(function() {
-    console.log(timeBlock)
-    console.log(this.id)
-    console.log(currentHour)
-    if(this.id === currentHour){
-      timeBlock.addClass('present')
-      timeBlock.removeClass('past')
-    } else if (this.id < currentHour) {
-      timeBlock.addClass('past')
-      timeBlock.removeClass('present')
-      timeBlock.removeClass('future')
+    // console.log(timeBlock)
+    // console.log(Number(this.id))
+    // console.log(currentHour)
+    if(Number(this.id) === numHour){
+      timeBlock.addClass('present');
+      timeBlock.removeClass('past');
+    } else if (Number(this.id) < numHour) {
+      timeBlock.addClass('past');
+      timeBlock.removeClass('present');
+      timeBlock.removeClass('future');
     } else {
-      timeBlock.addClass('future')
-      timeBlock.removeClass('present')
-      timeBlock.removeClass('past')
+      timeBlock.addClass('future');
+      timeBlock.removeClass('present');
+      timeBlock.removeClass('past');
     }}
-  )
+  );
+
+  // timeBlock.each(function() {
+  //   let thisHour = this.id
+  //   (this).has(thisHour === numHour).addClass(present);   
+  //   }
+  // )
+
+  // timeBlock.each(function() {
+  //   // console.log(timeBlock)
+  //   // console.log(Number(this.id))
+  //   let thisBlock = this.id
+  //   console.log(thisblock)
+  //   // console.log(currentHour)
+  //   if(Number(this.id) === numHour){
+  //     thisblock.addClass('present')
+  //     thisblock.removeClass('past')
+  //   } else if (Number(this.id) < numHour) {
+  //     thisblock.addClass('past')
+  //     thisblock.removeClass('present')
+  //     thisblock.removeClass('future')
+  //   } else {
+  //     thisblock.addClass('future')
+  //     thisblock.removeClass('present')
+  //     thisblock.removeClass('past')
+  //   }}
+  // )
+
+  // timeBlock.each(function() {
+  //   // console.log(timeBlock)
+  //   // console.log(Number(this.id))
+  //   // console.log(currentHour)
+  //   if(Number(this.id) === numHour){
+  //     this.id.addClass('present')
+  //     this.id.removeClass('past')
+  //   } else if (Number(this.id) < numHour) {
+  //     tthis.id.addClass('past')
+  //     this.id.removeClass('present')
+  //     this.id.removeClass('future')
+  //   } else {
+  //     this.id.addClass('future')
+  //     this.id.removeClass('present')
+  //     this.id.removeClass('past')
+  //   }}
+  // )
+
+  // timeBlock.each(function() {
+  //   // console.log(timeBlock)
+  //   // console.log(Number(this.id))
+  //   // console.log(currentHour)
+  //   if(Number(this.id) === numHour){
+  //     timeBlock.id.addClass('present')
+  //     timeBlock.id.removeClass('past')
+  //   } else if (Number(this.id) < numHour) {
+  //     timeBlock.id.addClass('past')
+  //     timeBlock.id.removeClass('present')
+  //     timeBlock.id.removeClass('future')
+  //   } else {
+  //     timeBlock.id.addClass('future')
+  //     timeBlock.id.removeClass('present')
+  //     timeBlock.id.removeClass('past')
+  //   }}
+  // )
+
 });  
-const sevenAm = (dayjs('2023-11-03 07:00 am').format('h a'));
-
-$('#7a').text(sevenAm);
 
 
-console.log(sevenAm);
+
