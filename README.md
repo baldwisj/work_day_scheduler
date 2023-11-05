@@ -19,6 +19,7 @@ Durning my creation of this webpage I have learned and sharpened many of my codi
 * I now have a better understanding of dayjs functionality and how it can be used in time specific applications such as this.
 
 ## Screenshot
-![Full-Screenshot]()
+![Full-Screenshot](./assets/images/work_day_scheduler_screenshot.png)
 
 ## Links
+https://baldwisj.github.io/work_day_scheduler/
