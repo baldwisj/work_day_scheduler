@@ -24,113 +24,50 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 
-  const seven = $("#7a");
-  const eight = $("#8a");
-  const nine = $("#9a");
-  const ten = $("#10a");
-  const eleven = $("#11a");
-  const twelve = $("#12p");
-  const one = $("#1p");
-  const two = $("#2p");
-  const three = $("#3p");
-  const four = $("#4p");
-  const five = $("#5p");
-
-  seven.text("7 am");
-  eight.text("8 am");
-  nine.text("9 am");
-  ten.text("10 am");
-  eleven.text("11 am");
-  twelve.text("12 pm");
-  one.text("1 pm");
-  two.text("2 pm");
-  three.text("3 pm");
-  four.text("4 pm");
-  five.text("5 pm");
   const calendarContainer = $('#calendar');
   
   const currentHour = dayjs().format('H')
   const numHour = Number(currentHour)
   const timeBlock = $(".time-block")
+  const todaysDate = $("#todaysDate")
+  const today = dayjs().format('MMMM DD, YYYY');
+  todaysDate.text(today);
+
   timeBlock.each(function() {
-    // console.log(timeBlock)
-    // console.log(Number(this.id))
-    // console.log(currentHour)
-    if(Number(this.id) === numHour){
-      timeBlock.addClass('present');
-      timeBlock.removeClass('past');
-    } else if (Number(this.id) < numHour) {
-      timeBlock.addClass('past');
-      timeBlock.removeClass('present');
-      timeBlock.removeClass('future');
-    } else {
-      timeBlock.addClass('future');
-      timeBlock.removeClass('present');
-      timeBlock.removeClass('past');
-    }}
-  );
+        // console.log(timeBlock)
+        // console.log(Number(this.id))
+        // console.log(currentHour)
+        let timeId = parseInt($(this).attr("id"));
+        if(timeId === numHour){
+          $(this).addClass('present');
+          $(this).removeClass('past');
+        } else if (timeId < numHour) {
+          $(this).addClass('past');
+          $(this).removeClass('present');
+          $(this).removeClass('future');
+        } else {
+          $(this).addClass('future');
+          $(this).removeClass('present');
+          $(this).removeClass('past');
+        }
 
-  // timeBlock.each(function() {
-  //   let thisHour = this.id
-  //   (this).has(thisHour === numHour).addClass(present);   
-  //   }
-  // )
+        let localText = localStorage.getItem(timeId)
+        if (localText) {
+          $(this).children("textarea").val(localText);
+        }
+  });
 
-  // timeBlock.each(function() {
-  //   // console.log(timeBlock)
-  //   // console.log(Number(this.id))
-  //   let thisBlock = this.id
-  //   console.log(thisblock)
-  //   // console.log(currentHour)
-  //   if(Number(this.id) === numHour){
-  //     thisblock.addClass('present')
-  //     thisblock.removeClass('past')
-  //   } else if (Number(this.id) < numHour) {
-  //     thisblock.addClass('past')
-  //     thisblock.removeClass('present')
-  //     thisblock.removeClass('future')
-  //   } else {
-  //     thisblock.addClass('future')
-  //     thisblock.removeClass('present')
-  //     thisblock.removeClass('past')
-  //   }}
-  // )
 
-  // timeBlock.each(function() {
-  //   // console.log(timeBlock)
-  //   // console.log(Number(this.id))
-  //   // console.log(currentHour)
-  //   if(Number(this.id) === numHour){
-  //     this.id.addClass('present')
-  //     this.id.removeClass('past')
-  //   } else if (Number(this.id) < numHour) {
-  //     tthis.id.addClass('past')
-  //     this.id.removeClass('present')
-  //     this.id.removeClass('future')
-  //   } else {
-  //     this.id.addClass('future')
-  //     this.id.removeClass('present')
-  //     this.id.removeClass('past')
-  //   }}
-  // )
+  $(calendarContainer).on("click", ".saveBtn", function(event) {
+    event.preventDefault();
+    let eventId = $(this).data("event")
+    let eventText = $(this).siblings("textarea").val();
 
-  // timeBlock.each(function() {
-  //   // console.log(timeBlock)
-  //   // console.log(Number(this.id))
-  //   // console.log(currentHour)
-  //   if(Number(this.id) === numHour){
-  //     timeBlock.id.addClass('present')
-  //     timeBlock.id.removeClass('past')
-  //   } else if (Number(this.id) < numHour) {
-  //     timeBlock.id.addClass('past')
-  //     timeBlock.id.removeClass('present')
-  //     timeBlock.id.removeClass('future')
-  //   } else {
-  //     timeBlock.id.addClass('future')
-  //     timeBlock.id.removeClass('present')
-  //     timeBlock.id.removeClass('past')
-  //   }}
-  // )
+    localStorage.setItem(eventId, (eventText));
+
+    })
+    
+
 
 });  
 
